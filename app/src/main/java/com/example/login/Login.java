@@ -25,6 +25,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         lodata = findViewById(R.id.loginwel);
         im= findViewById(R.id.phto);
         Bundle b= getIntent().getExtras();
@@ -35,6 +36,7 @@ public class Login extends AppCompatActivity {
                 lodata.setText("welcome mr."+set+"\n"+psw);
                // lodata.setText();
             }
+
         }catch (Exception e){
             Toast.makeText(this, "not page Exception", Toast.LENGTH_SHORT).show();
         }
@@ -54,7 +56,6 @@ public class Login extends AppCompatActivity {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
             byte[] bya =  baos.toByteArray();
-
             Final(lodata,bya,view);
 
         }
@@ -62,11 +63,8 @@ public class Login extends AppCompatActivity {
     }
 
     private void Final(TextView lodata, byte[] bya,View view) {
-
         Bitmap bitmap = BitmapFactory.decodeByteArray(bya,0,bya.length);
         im.setImageBitmap(bitmap);
-
-
 
         LayoutInflater layoutInflater = LayoutInflater.from(getApplicationContext());
       view = layoutInflater.inflate(R.layout.activity_selfy,null);

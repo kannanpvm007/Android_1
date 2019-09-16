@@ -19,9 +19,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user= findViewById(R.id.username);
         psw= findViewById(R.id.password);
+        Bundle b= getIntent().getExtras();
 
 
+        try {
+            if (b  != null) {
+                String setname =b.getString("unn");
+                String setpsw = b.getString("psss");
+                user.setText(setname);
+                psw.setText(setpsw);
 
+            }
+
+
+    }
+        catch (Exception e){
+            Toast.makeText(this, "exepatin", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     public void Signup(View view) {
@@ -30,14 +45,17 @@ Intent in = new Intent(MainActivity.this,sinupact.class);
  startActivity(in);
     }
 
+
     public void login(View view) {
         Toast.makeText(this, "Login ()", Toast.LENGTH_SHORT).show();
-        String un = "admin";
-        String ps="admin";
         name =  user.getText().toString();
         pswod= psw.getText().toString();
 
-        if(name.equals(un) && pswod.equals(ps) ){
+        boolean emty = name.isEmpty();
+        boolean emty2 = pswod.isEmpty();
+
+
+        if(emty != true && emty2 != true && name.equals(pswod)) {
           //  StringBuffer sb = new StringBuffer();
             //sb.append(name).append(pswod);
             Bundle  b = new Bundle();
@@ -47,8 +65,6 @@ Intent in = new Intent(MainActivity.this,sinupact.class);
             in.putExtras(b);
 
             startActivity(in);
-
-
 
 
         }
